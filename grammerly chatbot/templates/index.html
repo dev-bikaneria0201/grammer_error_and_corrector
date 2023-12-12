@@ -1,0 +1,198 @@
+<!-- templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar and Punctuation Correction</title>
+</head>
+<body>
+    <h1>Grammar and Punctuation Correction</h1>
+    <form id="correctionForm">
+        <textarea id="inputText" name="text" placeholder="Type your text here..."></textarea>
+        <button type="button" onclick="correctText()">Submit</button>
+    </form>
+    <h2>Corrected Text:</h2>
+    <div id="outputText"></div>
+
+    <script>
+        function correctText() {
+            var form = document.getElementById('correctionForm');
+            var formData = new FormData(form);
+
+            fetch('/correct', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('outputText').innerText = data.corrected_text;
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar-Correcting Chatbot</title>
+</head>
+<body>
+    <h1>Grammar-Correcting Chatbot</h1>
+    <form action="/chatbot" method="post">
+        <label for="user_message">Your Message:</label>
+        <input type="text" id="user_message" name="user_message" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p><strong>Your Input:</strong> {{ user_message }}</p>
+    <p><strong>Corrected Input:</strong> {{ corrected_message }}</p>
+    <p><strong>Bot Response:</strong> {{ bot_response }}</p>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar and Spelling Check</title>
+</head>
+<body>
+    <h1>Grammar and Spelling Check</h1>
+    <form method="post" action="/">
+        <label for="user_text">Enter a text for grammar and spelling check:</label>
+        <textarea name="user_text" rows="4" cols="50" required></textarea>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+    {% if user_text %}
+        <h2>Original Text:</h2>
+        <p>{{ user_text }}</p>
+        <h2>Corrected Text:</h2>
+        <p>{{ corrected_text }}</p>
+        <h2>Number of Errors:</h2>
+        <p>{{ changes }}</p>
+    {% endif %}
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar and Spelling Check</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 10px;
+    padding: 10px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Add some styling for the error messages if needed */
+.error p {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Grammar and Spelling Check</h1>
+    <form method="post" action="/">
+        <label for="user_text">Enter a text for grammar and spelling check:</label>
+        <textarea name="user_text" rows="4" cols="50" required></textarea>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+    {% if user_text %}
+        <h2>Original Text:</h2>
+        <p>{{ user_text }}</p>
+        <h2>Corrected Text:</h2>
+        <p>{{ corrected_text }}</p>
+        <h2>Error Counts:</h2>
+        <div class="error">
+        <p> Spelling Errors:{{ grammar_errors }}</p>
+        <p> Grammar Errors: {{ spelling_errors }}</p>
+        <p> Punctuation Errors: {{ punctuation_errors }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
